@@ -18,4 +18,6 @@ sudo g++ main.cpp source/* -lsfml-graphics -lsfml-window -lsfml-system
 Learning C++ and SFML fundamentals to eventually make my own game. Code base is constantly changing with new methods/ideas
 ## Media
 ![Sprite sheet](sprites/character.png)
-![Animation gif](readme/animation.gif)
+![Animation gif](readme/animation.gif)\
+![Level generation](readme/levelgen.png)\
+![Main Menu](readme/mainmenu.png)
