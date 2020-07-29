@@ -6,25 +6,25 @@ Menu::Menu(float width, float height) {
     }
 
     title.setFont(font);
-    title.setCharacterSize(200);
+    title.setCharacterSize(100);
     title.setFillColor(sf::Color::White);
-    title.setString("MAZE GAME");
+    title.setString("SFML Base");
     title.setPosition(sf::Vector2f(width / 3, 0));
 
     menu[0].setFont(font);
-    menu[0].setCharacterSize(100);
+    menu[0].setCharacterSize(50);
     menu[0].setFillColor(sf::Color::Red);
     menu[0].setString("Play");
     menu[0].setPosition(sf::Vector2f(width / 3, height / (MAX_NUMBER_OF_ITEMS + 1) * 1));
 
     menu[1].setFont(font);
-    menu[1].setCharacterSize(100);
+    menu[1].setCharacterSize(50);
     menu[1].setFillColor(sf::Color::White);
     menu[1].setString("Options");
     menu[1].setPosition(sf::Vector2f(width / 3, height / (MAX_NUMBER_OF_ITEMS + 1) * 2));
 
     menu[2].setFont(font);
-    menu[2].setCharacterSize(100);
+    menu[2].setCharacterSize(50);
 	menu[2].setFillColor(sf::Color::White);
 	menu[2].setString("Exit");
 	menu[2].setPosition(sf::Vector2f(width / 3, height / (MAX_NUMBER_OF_ITEMS + 1) * 3));

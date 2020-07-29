@@ -7,12 +7,13 @@ class Player : public Animation
 {
 private:
     float _speed;
-    
-public: 
+
+public:
     Player(sf::Texture&);
     void setSpeed(float);
     enum Direction {Up, Down, Left, Right};
     void Move(Direction);
     void Adjust(Direction);
+    void setPos(sf::Vector2f);
 };
 #endif

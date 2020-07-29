@@ -45,3 +45,7 @@ void Player::Adjust(Direction direction) {
             break;
     };
 }
+
+void Player::setPos(sf::Vector2f pos) {
+  _sprite.setPosition(pos.x, pos.y);
+}

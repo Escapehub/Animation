@@ -3,13 +3,14 @@
 #include "header/player.h"
 #include "header/menu.h"
 #include "header/tilemap.h"
-#include "header/maps.h"
 
 bool IsPlaying = false;
 bool HasKey = false;
 
 int main() {
-  sf::RenderWindow window(sf::VideoMode(1920,1080), "Animation");
+  float width = 512;
+  float height = 256;
+  sf::RenderWindow window(sf::VideoMode(512,256), "SFML Base");
   sf::Event event;
 
   // Menu
@@ -22,6 +23,7 @@ int main() {
   player.setEndFrame(192);
   player.setAnimationSpeed(.1f);
   player.setSpeed(.1f);
+  player.setPos(sf::Vector2f(window.getSize().x / 2, window.getSize().y /2));
   player.addAnimation(sf::IntRect(0, 192, 64, 64)); // up
   player.addAnimation(sf::IntRect(0, 0, 64, 64)); // down
   player.addAnimation(sf::IntRect(0, 64, 64, 64)); // left
@@ -59,7 +61,30 @@ int main() {
     2, 0, 1, 0, 3, 0, 2, 2, 2, 0, 1, 1, 1, 1, 1, 1,
     0, 0, 1, 0, 3, 2, 2, 2, 0, 0, 0, 0, 1, 1, 1, 1,
   };
-  if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), levelone, 16, 8))
+  int leveltwo[] =
+  {
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+    0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,
+  };
+  int levelthree[] =
+  {
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2,
+    3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 2,
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+    0, 0, 0, 0, 0, 0, 0, 3, 3, 0, 0, 0, 0, 0, 0, 2,
+  };
+  int* levels[] = {levelone, leveltwo, levelthree};
+  if (!map.load("sprites/tileset.png", sf::Vector2u(32, 32), levels[2], 16, 8))
     return -1;
 
   while (window.isOpen()) {
@@ -131,9 +156,9 @@ int main() {
           player.Adjust(Player::Direction::Left);
 
       if (IsPlaying) {
+        window.draw(map);
         window.draw(r);
         window.draw(player.getSprite());
-        window.draw(map);
         if (HasKey)
           window.draw(havekey);
         else
