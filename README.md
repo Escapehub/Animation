@@ -1,3 +1,4 @@
+![C/C++ CI](https://github.com/Escapehub/SFMLBase/workflows/C/C++%20CI/badge.svg)
 # SFMLBase
 
 Basic code for SFML C++ animation collision and level gen
